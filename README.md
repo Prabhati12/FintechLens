@@ -1,5 +1,5 @@
-# 🏦 FintechLens — Partner Analytics Engine
-### Finals Hackathon Submission | Data Analytics & Platform Insights
+#  FintechLens — Partner Analytics Engine
+### Data Analytics & Platform Insights
 
 ---
 
@@ -93,45 +93,3 @@ The synthetic dataset simulates a real fintech event log:
 - SHAP TreeExplainer on each segment model
 - Mean |SHAP| aggregated across segments → top-3 features
 - Each feature mapped to a structured hypothesis with: statement, A/B test design, direction, confidence
-
----
-
-## 5-Minute Pitch Script
-
-**Hook (30s):**
-> "Fintech platforms lose 20–30% of users annually. The standard response is generic re-engagement emails. FintechLens does something different — it tells you exactly which users will churn, in which segment, why, and what experiment to run to stop it."
-
-**Problem (30s):**
-- Churn varies wildly by segment — a global model misses this
-- Feature importance ≠ actionable insight; you need testable hypotheses
-- Partners need per-institution visibility, not aggregate reports
-
-**Demo order (2 min):**
-1. Overview → KPI cards + segment × lifecycle heatmap
-2. Segmentation → PCA scatter (show shape + colour)
-3. Churn Risk → survival curves ("Dormant hits 50% survival by day 60")
-4. Hypotheses → H1, H2, H3 cards + explorer (live chart)
-5. Partner Analytics → heatmap
-6. Upload → "works on any partner's CSV"
-
-**Key differentiators (45s):**
-- LightGBM **per segment** — not one global model
-- Survival curves — not just probability, but **when**
-- Hypotheses are **falsifiable** with a concrete A/B test design
-- Cross-partner comparison — built for a **platform**, not one company
-
----
-
-## Likely Judge Questions
-
-**Q: Why per-segment models?**
-A: "Churned Dormant users churn because of inactivity. At-Risk users churn because of support friction. Training one global model averages these out and loses the signal. Separate models per segment capture the real drivers."
-
-**Q: What's the difference between this and round 1?**
-A: "Round 1 was customer segmentation for a telco. This is fintech-specific — user-event data, product mix, KYC, lifecycle stages. The model is LightGBM (faster, better on tabular data), we added survival analysis, and the hypothesis engine is entirely new."
-
-**Q: How would this work in production?**
-A: "The event ingestion layer connects to the partner's data warehouse (BigQuery / Redshift). Models retrain weekly. The dashboard is a Streamlit app or embedded as an iframe in the partner's BI tool. The hypothesis cards feed directly into the product team's A/B testing backlog."
-
-**Q: What's the AUC?**
-A: "Between 0.78–0.85 per segment. More importantly, recall on high-risk users is over 75% — we catch the churners that matter most."
